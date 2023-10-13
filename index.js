@@ -60,6 +60,12 @@ const resolvers = {
       return newGame;
     },
 
+    editGame(_, args) {
+        let game = db.games.find((game) => game.id === args.id);
+        game = { ...game, ...args.game };
+        return game;
+        },
+
     deleteAuthor(_, args) {
       db.authors = db.authors.filter((author) => author.id !== args.id);
       return db.authors;
