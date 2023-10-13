@@ -28,6 +28,11 @@ const resolvers = {
       return db.games.find((game) => game.id === args.id);
     },
   },
+  Game: {
+    reviews(game) {
+      return db.reviews.filter((review) => review.game_id === game.id);
+    },
+  },
 };
 // apollo server
 const server = new ApolloServer({
