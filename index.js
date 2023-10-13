@@ -1,7 +1,10 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneApolloServer } from "@apollo/server/standalone";
+import { typeDefs } from "./schema";
 
-const server = new ApolloServer({});
+const server = new ApolloServer({
+    typeDefs,
+});
 
 const { url } = await startStandaloneApolloServer(server, {
   listen: { port: 4000 },
