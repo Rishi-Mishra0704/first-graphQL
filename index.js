@@ -51,6 +51,14 @@ const resolvers = {
       db.games = db.games.filter((game) => game.id !== args.id);
       return db.games;
     },
+    addGame(_, args) {
+      let newGame = {
+        id: Math.floor(Math.random() * 10000),
+        ...args.game,
+      };
+      db.games.push(newGame);
+      return newGame;
+    },
   },
 };
 // apollo server
