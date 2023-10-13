@@ -59,6 +59,34 @@ const resolvers = {
       db.games.push(newGame);
       return newGame;
     },
+
+    deleteAuthor(_, args) {
+      db.authors = db.authors.filter((author) => author.id !== args.id);
+      return db.authors;
+    },
+
+    addAuthor(_, args) {
+      let newAuthor = {
+        id: Math.floor(Math.random() * 10000),
+        ...args.author,
+      };
+      db.authors.push(newAuthor);
+      return newAuthor;
+    },
+
+    deleteReview(_, args) {
+      db.reviews = db.reviews.filter((review) => review.id !== args.id);
+      return db.reviews;
+    },
+
+    addReview(_, args) {
+      let newReview = {
+        id: Math.floor(Math.random() * 10000),
+        ...args.review,
+      };
+      db.reviews.push(newReview);
+      return newReview;
+    },
   },
 };
 // apollo server
