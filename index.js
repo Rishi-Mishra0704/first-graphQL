@@ -46,6 +46,12 @@ const resolvers = {
       return db.authors.find((author) => author.id === review.author_id);
     },
   },
+  Mutation: {
+    deleteGame(_, args) {
+      db.games = db.games.filter((game) => game.id !== args.id);
+      return db.games;
+    },
+  },
 };
 // apollo server
 const server = new ApolloServer({
